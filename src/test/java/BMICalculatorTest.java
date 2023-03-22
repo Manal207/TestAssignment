@@ -1,4 +1,5 @@
 import org.example.BMICalculator;
+import org.example.BMICalculatorWithBoundaryShift;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -41,4 +42,18 @@ public class BMICalculatorTest {
         String actual4 = BMICalculator.getCategory(35.5);
         assertEquals(expected4, actual4);
     }
+
+    @Test
+    public void testGetCategoryWithBoundaryShift() {
+        // Test case: BMI = 24.9 -> Normal weight (with original boundary)
+        String expected1 = "Normal weight";
+        String actual1 = BMICalculator.getCategory(24.9);
+        assertEquals(expected1, actual1);
+
+        // Test case: BMI = 24.9 -> Overweight (with shifted boundary)
+        String expected2 = "Overweight";
+        String actual2 = BMICalculatorWithBoundaryShift.getCategory(24.9);
+        assertEquals(expected2, actual2);
+    }
+
 }
